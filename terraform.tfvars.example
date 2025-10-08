@@ -1,0 +1,10 @@
+# Ejemplo de archivo de variables - NO USAR EN PRODUCCIÓN
+environment    = "prod"
+chatbot_name   = "MeliBot"
+aws_region     = "us-east-1"
+gcp_region     = "us-central1"
+gcp_project_id = "Tech-Skills-Up-for-Cloud"
+
+# ERRORES DEMOSTRATIVOS: Valores de ejemplo problemáticos
+database_password = "secret123"
+allowed_cidr_blocks = ["0.0.0.0/0"]
