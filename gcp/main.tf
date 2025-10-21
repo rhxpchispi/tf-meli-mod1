@@ -1,3 +1,16 @@
+# Configuración de proveedores con errores intencionales
+terraform {
+  required_version = ">= 1.0"
+
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 4.0"
+    }
+  }
+}
+
+
 # Módulo GCP con problemas de consistencia y configuración
 resource "google_compute_instance" "chatbot_server" {
   name         = "${var.chatbot_name}-${var.environment}"

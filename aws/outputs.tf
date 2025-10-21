@@ -5,12 +5,6 @@ output "aws_endpoint" {
   sensitive   = false
 }
 
-output "gcp_endpoint" {
-  description = "GCP Chatbot endpoint URL"
-  value       = module.gcp.endpoint_url
-  sensitive   = false
-}
-
 output "database_connection_string" {
   description = "Database connection string"
   value       = "server=${module.aws.database_host};password=${var.database_password}"
@@ -24,7 +18,6 @@ output "full_architecture_details" {
   description = "Complete architecture details"
   value = {
     aws = module.aws.full_details # ERROR INTENCIONAL 12: Output que expone IPs internas sin necesidad
-    gcp = module.gcp.full_details
   }
 }
 

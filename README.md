@@ -35,11 +35,6 @@ sin conectarse a los proveedores de nube.
 
 Estas configuraciones fueron creadas a propósito para que los alumnos las identifiquen y propongan mejoras:
 
-1. **Credenciales de AWS hardcodeadas en la configuración del provider**
-
-- Access key y secret key directamente en el bloque provider
-- Las credenciales deberían usar variables de entorno o gestión segura de secretos
-
 2. **Configuraciones de seguridad demasiado permisivas**
 
 - Security Group de AWS permite todo el tráfico desde 0.0.0.0/0 en todos los puertos

@@ -1,3 +1,25 @@
+# Configuración de proveedores con errores intencionales
+terraform {
+  required_version = ">= 1.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+
+  # ERROR INTENCIONAL 1: Backend no configurado para estado remoto
+  # CORRECCIÓN 1: 
+  # backend "s3" {
+  #   bucket = "my-terraform-state-bucket"
+  #   key    = "MeliBot/terraform.tfstate"
+  #   region = "us-east-1"
+  #   encrypt        = true
+  #   dynamodb_table = "terraform-state-lock"
+  # }
+}
+
 # Módulo AWS con múltiples problemas de seguridad y disponibilidad
 resource "aws_instance" "chatbot_server" {
   ami                    = "ami-0c02fb55956c7d316"  # ERROR INTENCIONAL 13: AMI hardcodeada

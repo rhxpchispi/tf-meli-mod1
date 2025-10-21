@@ -1,16 +1,26 @@
+# Variables con tipos complejos y valores por defecto problemáticos
 variable "environment" {
   description = "Environment name"
   type        = string
+  default     = "prod" # ERROR INTENCIONAL 7: Default a prod
+  # default   = "dev"  # CORRECCIÓN 7: Default a desarrollo
+
+  validation {
+    condition     = contains(["dev", "test", "prod"], var.environment)
+    error_message = "Ambiente debe ser dev, test, o prod."
+  }
 }
 
 variable "chatbot_name" {
   description = "Name of the chatbot"
   type        = string
+  default     = "melibot"
 }
 
 variable "aws_region" {
   description = "AWS region"
   type        = string
+  default     = "us-east-1"
 }
 
 variable "allow_public_access" {
@@ -23,6 +33,15 @@ variable "allowed_cidr_blocks" {
   description = "Allowed CIDR blocks"
   type        = list(string)
   default     = []
+}
+
+# ERROR INTENCIONAL 9: Variable sensible sin protección
+variable "database_password" {
+  description = "Database password"
+  type        = string
+  default     = "password123"
+  # CORRECCIÓN 9: Variable sensible marcada como sensitive
+  # sensitive   = true
 }
 
 #### MEJORAS NECESARIAS:

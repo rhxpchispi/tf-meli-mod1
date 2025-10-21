@@ -1,20 +1,37 @@
+# Variables con tipos complejos y valores por defecto problemáticos
 variable "environment" {
   description = "Environment name"
   type        = string
+  default     = "prod" # ERROR INTENCIONAL 7: Default a prod
+  # default   = "dev"  # CORRECCIÓN 7: Default a desarrollo
+
+  validation {
+    condition     = contains(["dev", "test", "prod"], var.environment)
+    error_message = "Ambiente debe ser dev, test, o prod."
+  }
 }
 
 variable "chatbot_name" {
   description = "Name of the chatbot"
   type        = string
+  default     = "melibot"
 }
 
 variable "gcp_region" {
   description = "GCP region"
   type        = string
+  default     = "us-central1" # ERROR INTENCIONAL 8: Regiones diferentes
+  # default   = "us-east1"     # CORRECCIÓN 8: Regiones consistentes
 }
 
 variable "gcp_project_id" {
   description = "GCP Project ID"
+  type        = string
+  default     = "my-gcp-project"
+}
+
+variable "gcp_project" {
+  description = "ID del proyecto GCP"
   type        = string
 }
 
